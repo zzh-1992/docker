@@ -25,6 +25,14 @@ nginx相关目录:
 /etc/nginx (配置文件目录)
 /usr/share/nginx  站点目录（50x.html  index.html）
 
+docker_nginx原始目录
+nginx:
+/usr/sbin/nginx
+/usr/lib/nginx
+/etc/nginx
+/usr/share/nginx
+
+
 宿主机
 /usr/mynginx/conf:/etc/nginx
 /usr/mynginx/html:/usr/share/nginx/html
