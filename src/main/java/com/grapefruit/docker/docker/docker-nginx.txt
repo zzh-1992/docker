@@ -54,3 +54,14 @@ docker cp abcdb0c5e016:/etc/nginx/. /Users/zhihuangzhang/software/DockerMount/ng
 docker cp abcdb0c5e016:/usr/share/nginx/html/. /Users/zhihuangzhang/software/DockerMount/nginx/html
 /Users/zhihuangzhang/software/DockerMount/nginx/log
 
+upstream grapefruit {
+                server 47.115.42.52:8888;
+                server 47.115.42.52:9999;
+                #server 192.168.2.100:8081;
+                #server 192.168.2.100:8080;
+}
+location / {
+        #root   /usr/share/nginx/html;
+        #index  index.html index.htm;
+        proxy_pass http://grapefruit;
+    }
