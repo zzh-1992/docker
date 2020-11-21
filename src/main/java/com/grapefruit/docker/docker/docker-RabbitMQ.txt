@@ -1,0 +1,34 @@
+https://www.rabbitmq.com/img/RabbitMQ-logo.svg
+https://www.rabbitmq.com/
+
+docker cp  3a5b231ee136:/etc/rabbitmq/rabbitmq.conf  /usr/rabbitmq
+
+阿里云dockers安装
+https://developer.aliyun.com/article/110806
+
+
+
+管理插件
+默认情况下，在 15672的标准管理端口上提供了第二组已安装并启用的管理插件的标记，默认用户名和密码为 / ：guestguest
+
+$ docker run -d --hostname my-rabbit --name some-rabbit rabbitmq:3-management
+您可以通过在浏览器中访问它，或者，如果您需要在主机外部访问，在端口 8080 上访问它：http://container-ip:15672
+
+然后，您可以转到浏览器或在浏览器中。http://localhost:8080http://host-ip:8080
+
+
+docker pull rabbitmq:3.8-management
+
+docker run -d --name GGrabbit -p 5672:5672 -p 15672:15672 -p 15670:15670 -p 15674:15674 -v /usr/rabbitmq/conf:/etc/rabbitmq  rabbit:1.0 
+docker run -d --name rabbit01 -v /usr/rabbitmq/conf:/etc/rabbitmq -p 15672:15672  -p 5672:5672 -p 15670:15670 -p 15674:15674 rabbitmq:3.8-management
+
+
+
+
+
+docker run -d --name rabbit01 -v /usr/rabbitmq:/etc/rabbitmq -p 15672:15672  -p 5672:5672 -p 15670:15670 -p 15674:15674 rabbitmq:3.8-management
+
+
+docker run -d  --name rabbit66   -p 8080:15672 -v /usr/rabbitmq/conf:/etc/rabbitmq rabbit:1.0 
+
+docker run -d --name rabbit00 -p 5672:5672 -p 80:15672 -p 15670:15670 -p 15674:15674 rabbit:1.0

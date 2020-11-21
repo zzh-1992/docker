@@ -1,0 +1,15 @@
+Run_SpringBoot(运行spring boot)
+
+官网链接:https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-running-your-application
+
+7. Running Your Application
+7.1. Running from an IDE
+
+7.2. Running as a Packaged Application
+$ java -jar target/myapplication-0.0.1-SNAPSHOT.jar
+
+7.3. Using the Maven Plugin
+$ mvn spring-boot:run
+
+7.4. Using the Gradle Plugin
+$ gradle bootRun

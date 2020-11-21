@@ -1,0 +1,31 @@
+spring.datasource.url=jdbc:mysql://localhost:3306/db_jpa<em id="__mceDel" style="font-size: 12px;">?characterEncoding=utf8&useSSL=false&serverTimezone=UTC</em>
+
+
+
+@GeneratedValue(strategy = GenerationType.
+<em id="__mceDel" style="font-size: 12px;">IDENTITY</em>
+<em id="__mceDel" style="font-size: 12px;">) <br>　　
+private Long id; <br>　　
+private String name; <br>　　
+private String email; <br>}
+</em>
+
+
+
+datasource:
+    db3307:
+      username: root
+      password: 123456
+      jdbc-url: jdbc:mysql://192.168.2.115:3307/grapefruit?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&useSSL=false
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    db3308:
+      username: root
+      password: 123456
+      jdbc-url: jdbc:mysql://192.168.2.103:3306/grapefruit?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&useSSL=false
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    db3306:
+      username: root
+      password: 123456
+      jdbc-url: jdbc:mysql://192.168.2.115:3306/grapefruit?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&useSSL=false
+      driver-class-name: com.mysql.cj.jdbc.Driver
+

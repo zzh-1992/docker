@@ -1,0 +1,66 @@
+账户
+密码
+
+阿里云2号
+tcp://47.115.42.52:2375
+
+安装java
+路径
+/usr/local/java/jdk1.8.0_121
+
+配置环境变量
+JAVA_HOME=/usr/local/java/jdk1.8.0_121
+CLASSPATH=.:$JAVA_HOME/lib/
+PATH=$PATH:$JAVA_HOME/bin
+export PATH JAVA_HOME CLASSPATH
+
+export JAVA_HOME=/usr/jdk1.8.0_121  #这里是jdk的目录路径
+export PATH=$PATH:$JAVA_HOME/bin
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+安装docker
+1、安装docker
+	yum -y install docker
+
+2、开启dockers
+	systemctl start docker
+
+3、设置开机自动开启docker
+	systemctl enable docker
+
+4、检查dockers版本
+	docker version
+
+5、idea远程连接docker（添加-H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock）
+	vim /usr/lib/systemd/system/docker.service(编辑)
+	ExecStart=/usr/bin/dockerd-current \
+	ExecStart=/usr/bin/dockerd-current -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock \
+	重新加载配并重启docker：
+		systemctl daemon-reload && systemctl restart docker
+
+		192.168.8.213
+		netstat -apn  | grep 2933
+		kill -9 16790
+
+6、设置镜像加速器 https://cr.console.aliyun.com/cn-shenzhen/instances/mirrors
+vim /etc/docker/daemon.json
+
+查看进程的线程信息
+top -H -p 1141
+
+ps -ef|grep 30103
+
+curl http://47.115.42.52:30100
+
+47.115.42.52
+
+cd pts/1
+
+问题
+创建容器失败
+显示：container_linux.go:235: starting container process caused "process_linux.go:258: applying cgroup configuration for process caused \"Cannot set property TasksAccounting, or unknown property.\""
+解决办法：yum update
+
+
+192.168.8.213
+

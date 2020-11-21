@@ -1,0 +1,23 @@
+- `/bin`    - User executables
+- `/conf`   - Configuration files
+- `/lib`    - ZooKeeper JAR files and all the required java library dependencies
+- `/docs`   - Documents
+
+
+
+docker run -d --name zookeeper -p 2181:2181 zookeeper:3.6.1
+
+启动zookeeper容器实例：
+docker run --name zookeeper09 --restart always -d zookeeper:3.6.1
+
+docker run --name zookeeper02 -d -p 2182:2182 -v /usr/myzookeeper/conf/zoo.cfg:/conf/zoo.cfg zookeeper:3.6.1
+
+==============================================
+zookeeper容器的配置文件路径
+/conf/zoo.cfg
+
+宿主机挂载路径
+/usr/myzookeeper/conf/zoo.cfg
+==============================================
+
+docker cp 8b6917e3a01b:/conf/zoo.cfg   /usr/myzookeeper/conf/zoo.cfg

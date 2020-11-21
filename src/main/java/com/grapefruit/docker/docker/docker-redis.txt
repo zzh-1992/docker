@@ -1,0 +1,42 @@
+容器目录
+/usr/local/bin/redis-benchmark
+/usr/local/bin/redis-check-aof
+/usr/local/bin/redis-check-rdb
+/usr/local/bin/redis-cli
+/usr/local/bin/redis-sentinel
+/usr/local/bin/redis-server
+
+
+Reading the configuration file, at line 58 'logfile /var/log/redis/redis.log' Can't open the log file: Permission denied
+
+宿主机设置
+mkdir -p /usr/redis/{conf,datadir,logs}  （创建挂载目录）
+chown -R 999:999 /usr/redis/logs/  （修改权限）
+
+创建redis容器
+docker run  -d  -p6380:6380 -v /usr/redis/conf/redis.conf:/usr/local/etc/redis/redis.conf  -v /usr/redis/datadir:/data  -v  /usr/redis/logs:/var/log/redis/  --name myRedis daocloud.io/library/redis:4.0.14   redis-server  /usr/local/etc/redis/redis.conf
+
+=============================================================
+docker run -d -p6380:6380 -v /usr/redis/conf/redis.conf:/usr/local/etc/redis/redis.conf -v /usr/redis/datadir:/data -v /usr/redis/logs:/var/log/redis/ --name myRedis redis:latest redis-server /usr/local/etc/redis/redis.conf
+
+直接挂载后容器起不来(查看日志，显示权限不够)
+[root@iZwz9axiviws7b28gwzikeZ ~]# docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+5d2690d80d70        redis:latest        "docker-entrypoint..."   37 seconds ago      Exited (1) 13 seconds ago                       myRedis
+[root@iZwz9axiviws7b28gwzikeZ ~]# docker logs 5d2
+*** FATAL CONFIG FILE ERROR (Redis 6.0.8) ***
+Reading the configuration file, at line 58
+>>> 'logfile /var/log/redis/redis.log'
+Can't open the log file: Permission denied
+*** FATAL CONFIG FILE ERROR (Redis 6.0.8) ***
+Reading the configuration file, at line 58
+>>> 'logfile /var/log/redis/redis.log'
+Can't open the log file: Permission denied
+[root@iZwz9axiviws7b28gwzikeZ ~]#
+
+修改logs的权限
+chmod 7 /usr/redis/logs
+=============================================================
+
+
+docker run -d --privileged=true -p6380:6380 -v /usr/redis/conf/redis.conf:/usr/local/etc/redis/redis.conf -v /usr/redis/datadir:/data -v /usr/redis/logs:/var/log/redis/ --name myRedis redis:latest redis-server /usr/local/etc/redis/redis.conf

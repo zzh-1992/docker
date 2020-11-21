@@ -1,0 +1,49 @@
+Embedded_Web_Servers
+
+官网链接:https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-embedded-web-servers
+
+Use Another Web Server(改用其他容器)
+    For servlet stack applications, the spring-boot-starter-web includes
+    Tomcat by including spring-boot-starter-tomcat, but you can use spring-boot-starter-jetty
+    or spring-boot-starter-undertow instead.
+
+    For reactive stack applications, the spring-boot-starter-webflux includes Reactor Netty
+    by including spring-boot-starter-reactor-netty, but you can use spring-boot-starter-tomcat,
+    spring-boot-starter-jetty, or spring-boot-starter-undertow instead.
+
+The following Maven example shows how to exclude Tomcat and include Jetty for Spring MVC:
+    <properties>
+        <servlet-api.version>3.1.0</servlet-api.version>
+    </properties>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <exclusions>
+            <!-- Exclude the Tomcat dependency 移除tomcat -->
+            <exclusion>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-tomcat</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    <!-- Use Jetty instead 使用替换的容器 -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-jetty</artifactId>
+    </dependency>
+
+Disabling the Web Server(禁用Web服务器)
+    If your classpath contains the necessary bits to start a web server,
+    Spring Boot will automatically start it. To disable this behavior configure the WebApplicationType
+    in your application.properties, as shown in the following example:
+
+    在properties文件中声明:
+    spring.main.web-application-type=none
+
+Change the HTTP Port(修改端口,默认8080)
+    In a standalone application, the main HTTP port defaults to 8080 but can be set with server.port
+    (for example, in application.properties or as a System property).
+    Thanks to relaxed binding of Environment values, you can also use SERVER_PORT (for example, as an OS environment variable).
+
+Use a Random Unassigned HTTP Port(使用随机分配的端口:server.port = 0)
+    To scan for a free port (using OS natives to prevent clashes) use server.port=0.

@@ -1,0 +1,25 @@
+Change_Configuration_Depending_on_the_Environment
+
+server:
+  port: 9000
+
+spring:
+  profiles:
+    active: production
+    #the value of spring.profile,such as "development" and "production" 表示使用哪一个配置启动springboot
+---
+#配置1
+spring:
+  profiles: development
+server:
+  port: 9001
+
+---
+#配置2
+spring:
+  profiles: production
+server:
+  port: 0
+
+To do the same thing with properties files,
+you can use application-${profile}.properties to specify profile-specific values.

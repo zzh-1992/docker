@@ -1,0 +1,73 @@
+
+docker hub网站：
+
+docker run --name mysql00 -p3307:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
+
+mysql容器目录
+/usr/bin/mysql
+/usr/lib/mysql
+/var/lib/mysql
+/var/lib/mysql/mysql
+
+root@7896a92a06d6:/# whereis mysql
+mysql: /usr/bin/mysql /usr/lib/mysql /etc/mysql
+
+宿主机目录创建
+配置目录conf   /usr/mysql/conf
+数据目录datadir   /usr/mysql/datadir
+日志目录logs  /usr/mysql/logs
+
+mkdir -p /usr/mysql/{conf,datadir,logs}  （创建挂载目录）
+
+运行（创建容器）
+docker run --name mysql06 -p3306:3306 -v /usr/mysql3306/datadir:/var/lib/mysql  -v  /usr/mysql3306/conf:/etc/mysql/conf.d  -v /usr/mysql3306/logs:/var/log/mysql  -e MYSQL_ROOT_PASSWORD=123456 -d mysql:8.0.2
+
+docker run --name mysql07 -p3307:3306 -v /usr/mysql3307/datadir:/var/lib/mysql  -v  /usr/mysql3307/conf:/etc/mysql/conf.d  -v /usr/mysql3307/logs:/var/log/mysql  -e MYSQL_ROOT_PASSWORD=123456 -d mysql:8.0.2
+
+docker run --name mysql08 -p3308:3306 -v /usr/mysql3308/datadir:/var/lib/mysql  -v  /usr/mysql3308/conf:/etc/mysql/conf.d  -v /usr/mysql3308/logs:/var/log/mysql  -e MYSQL_ROOT_PASSWORD=123456 -d mysql:8.0.2
+
+docker run --name mysql11 -p3311:3306 -v /usr/mysql3311/datadir:/var/lib/mysql  -v  /usr/mysql3311/conf:/etc/mysql/conf.d  -v /usr/mysql3311/logs:/var/log/mysql  -e MYSQL_ROOT_PASSWORD=123456 -d mysql:8.0.2
+
+docker run --name mysql12 -p3312:3306 -v /usr/mysql3312/datadir:/var/lib/mysql  -v  /usr/mysql3312/conf:/etc/mysql/conf.d  -v /usr/mysql3312/logs:/var/log/mysql  -e MYSQL_ROOT_PASSWORD=123456 -d mysql:8.0.2
+
+docker run --name mysql13 -p3313:3306 -v /usr/mysql3313/datadir:/var/lib/mysql  -v  /usr/mysql3313/conf:/etc/mysql/conf.d  -v /usr/mysql3313/logs:/var/log/mysql  -e MYSQL_ROOT_PASSWORD=123456 -d mysql:8.0.2
+
+docker run --name mysql -p3306:3306 -v /usr/mysql3306/datadir:/var/lib/mysql  -v  /usr/mysql3306/conf:/etc/mysql/conf.d  -v /usr/mysql3306/logs:/var/log/mysql  -e MYSQL_ROOT_PASSWORD=123456 -d mysql:8.0.2
+设置文件夹用户
+chown -R 999:999 /usr/mysql3308/logs/
+
+chown -R 999:999 /usr/mysql/logs/
+
+记录主机的日志文件和起始位置
+show master status
+
+重置主机binlog日志和起始位置
+reset master
+
+查看从机的跟随状态
+show slave status \G
+	确保以下两个线程运行（yes）
+		   Slave_IO_Running: Yes
+		Slave_SQL_Running: Yes
+
+
+从库命令
+reset slave; 
+change master to
+master_host='192.168.2.115',
+master_port=3306,
+master_user='slave',
+master_password='slave',
+master_log_file='mysql-bin.000001',
+master_log_pos=154;
+
+
+A:
+	reset master
+B:
+	change master to master_log_file='mysql-bin.000001',master_log_pos=154;
+
+
+
+		
+

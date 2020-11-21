@@ -1,0 +1,18 @@
+
+1、安装docker 
+	yum -y install docker
+
+2、开启dockers
+	systemctl start docker
+
+3、设置开机自动开启docker
+	systemctl enable docker
+
+4、检查dockers版本
+	docker version
+
+5、idea远程连接docker（添加-H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock）
+	vim /usr/lib/systemd/system/docker.service(编辑)
+	ExecStart=/usr/bin/dockerd-current -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock \
+	重新加载配并重启docker：
+		systemctl daemon-reload && systemctl restart docker
