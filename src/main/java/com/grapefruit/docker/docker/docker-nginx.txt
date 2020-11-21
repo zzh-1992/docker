@@ -1,6 +1,6 @@
 
 运行容器
-docker run --name nginx01 -p 80:80 -d nginx
+docker run --name nginx -p 80:80 -d nginx
 
 关闭
 docker stop 容器名
@@ -48,6 +48,9 @@ docker start 容器名
 docker run --name nginx -d -p 80:80 -v /usr/nginx/conf:/etc/nginx -v /usr/nginx/html:/usr/share/nginx/html -v /usr/nginx/log:/var/log/nginx nginx
 
 
-
-
+mac
+docker run --name myNginx -d -p 80:80 -v /Users/zhihuangzhang/software/DockerMount/nginx/conf:/etc/nginx -v /Users/zhihuangzhang/software/DockerMount/nginx/html:/usr/share/nginx/html -v /Users/zhihuangzhang/software/DockerMount/nginx/log:/var/log/nginx nginx
+docker cp abcdb0c5e016:/etc/nginx/. /Users/zhihuangzhang/software/DockerMount/nginx/conf
+docker cp abcdb0c5e016:/usr/share/nginx/html/. /Users/zhihuangzhang/software/DockerMount/nginx/html
+/Users/zhihuangzhang/software/DockerMount/nginx/log
 
