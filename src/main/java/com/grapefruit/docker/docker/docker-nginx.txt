@@ -48,7 +48,6 @@ docker cp 3abf05d4dbe0:/etc/nginx/.   /usr/mynginx/conf
 
 docker cp 3abf05d4dbe0:/usr/share/nginx/html/.   /usr/mynginx/html
 
-
 启动nginx容器
 docker start 容器名
 
@@ -77,4 +76,4 @@ location / {
         #root   /usr/share/nginx/html;
         #index  index.html index.htm;
         proxy_pass http://grapefruit;
-    }
+}

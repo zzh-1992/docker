@@ -19,6 +19,15 @@ docker run  -d  -p6380:6380 -v /usr/redis/conf/redis.conf:/usr/local/etc/redis/r
 =============================================================
 docker run -d -p6380:6380 -v /usr/redis/conf/redis.conf:/usr/local/etc/redis/redis.conf -v /usr/redis/datadir:/data -v /usr/redis/logs:/var/log/redis/ --name myRedis redis:latest redis-server /usr/local/etc/redis/redis.conf
 
+docker run -d -p6379:6379 \
+-v /Users/zhihuangzhang/software/DockerMount/redis/conf/redis.conf:/usr/local/etc/redis/redis.conf \
+-v /Users/zhihuangzhang/software/DockerMount/redis/datadir:/data \
+-v /Users/zhihuangzhang/software/DockerMount/redis/logs:/var/log/redis/ \
+--name myRedis redis:latest \
+redis-server /usr/local/etc/redis/redis.conf
+
+/Users/zhihuangzhang/software/DockerMount/redis
+
 直接挂载后容器起不来(查看日志，显示权限不够)
 [root@iZwz9axiviws7b28gwzikeZ ~]# docker ps -a
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
