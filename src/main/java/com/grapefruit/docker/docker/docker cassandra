@@ -1,0 +1,12 @@
+
+
+
+
+docker run --name cassandra9042 -p9041:9041 -v /usr/cassandra/datadir:/var/lib/cassandra -v /usr/cassandra/cassandra.yaml:/etc/cassandra/cassan
+dra.yaml -d cassandra:3.11
+
+docker run --name cassandra9041 \
+-p9041:9041 \
+-v /usr/cassandra/datadir:/var/lib/cassandra \
+-v /usr/cassandra/cassandra.yaml:/etc/cassandra/cassandra.yaml \
+-d cassandra:3.11
