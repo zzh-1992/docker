@@ -62,14 +62,14 @@ nginx -s reload
 kill -s QUIT 1628
 
 mac
-docker run --name myNginx -d -p 80:80 -v /Users/zhihuangzhang/software/DockerMount/nginx/conf:/etc/nginx -v /Users/zhihuangzhang/software/DockerMount/nginx/html:/usr/share/nginx/html -v /Users/zhihuangzhang/software/DockerMount/nginx/log:/var/log/nginx nginx
-docker cp abcdb0c5e016:/etc/nginx/. /Users/zhihuangzhang/software/DockerMount/nginx/conf
-docker cp abcdb0c5e016:/usr/share/nginx/html/. /Users/zhihuangzhang/software/DockerMount/nginx/html
-/Users/zhihuangzhang/software/DockerMount/nginx/log
+docker run --name myNginx -d -p 80:80 -v /Users/myName/software/DockerMount/nginx/conf:/etc/nginx -v /Users/myName/software/DockerMount/nginx/html:/usr/share/nginx/html -v /Users/myName/software/DockerMount/nginx/log:/var/log/nginx nginx
+docker cp abcdb0c5e016:/etc/nginx/. /Users/myName/software/DockerMount/nginx/conf
+docker cp abcdb0c5e016:/usr/share/nginx/html/. /Users/myName/software/DockerMount/nginx/html
+/Users/myName/software/DockerMount/nginx/log
 
 upstream grapefruit {
-                server 47.115.42.52:8888;
-                server 47.115.42.52:9999;
+                server myHost:8888;
+                server myHost:9999;
                 #server 192.168.2.100:8081;
                 #server 192.168.2.100:8080;
 }

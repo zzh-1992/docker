@@ -2,7 +2,7 @@
 密码
 
 阿里云2号
-tcp://47.115.42.52:2375
+tcp://myHost:2375
 
 安装java
 路径
@@ -50,9 +50,9 @@ top -H -p 1141
 
 ps -ef|grep 30103
 
-curl http://47.115.42.52:30100
+curl http://myHost:30100
 
-47.115.42.52
+myHost
 
 cd pts/1
 
