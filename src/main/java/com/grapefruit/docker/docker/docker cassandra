@@ -10,3 +10,19 @@ docker run --name cassandra9041 \
 -v /usr/cassandra/datadir:/var/lib/cassandra \
 -v /usr/cassandra/cassandra.yaml:/etc/cassandra/cassandra.yaml \
 -d cassandra:3.11
+
+容器默认目录
+root@5c1535872902:/# whereis cassandra
+cassandra:
+/etc/cassandra
+/opt/cassandra/bin/cassandra
+/opt/cassandra/bin/cassandra.ps1
+/opt/cassandra/bin/cassandra.bat
+
+问题2:不同版本的cassandra配置文件不同(cassandra.yaml),使用对应版本的cassandra及挂载对应版本的配置文件
+
+创建端口9041的Cassandra容器
+docker run --name cassandra9041 \
+-v /usr/cassandra9041/datadir:/var/lib/cassandra \
+-v /usr/cassandra9041/cassandra.yaml:/etc/cassandra/cassandra.yaml \
+-p 9041:9041 cassandra:3.11
