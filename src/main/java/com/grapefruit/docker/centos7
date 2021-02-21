@@ -1,0 +1,59 @@
+
+-bash: wget: command not found
+    yum -y install wget
+
+安装gcc
+    1.先查看当前的gcc版本 是否在 5.3以上 gcc -v
+    2.清空上次编译报错的文件make distclean
+    3.如果当前的gcc版本不是5.3以上，执行下面命令更新gcc版本
+    #升级到 5.3及以上版本
+
+    yum -y install centos-release-scl
+    yum -y install devtoolset-9-gcc devtoolset-9-gcc-c++ devtoolset-9-binutils
+    scl enable devtoolset-9 bash
+
+安装redis报错
+    错误显示
+    make[1]: *** [server.o] Error 1
+    make[1]: Leaving directory `/usr/local/redis-6.0.10/src'
+    make: *** [all] Error 2
+
+防火墙设置
+    firewalld的基本使用
+    启动： systemctl start firewalld
+    关闭： systemctl stop firewalld
+    查看状态： systemctl status firewalld
+    开机禁用  ： systemctl disable firewalld
+    开机启用  ： systemctl enable firewalld
+
+redis
+    wget http://download.redis.io/releases/redis-6.0.8.tar.gz
+
+修改静态ip
+    vi /etc/sysconfig/network-scripts/ifcfg-ens33
+
+
+过滤查找文件中的字符串
+cat -n redis.conf |grep "6379"
+
+查看网络连接
+netstat -natp
+
+触发对百度对请求
+curl www.baidu.com:80
+
+监听网卡eth0 端口号80
+tcpdump -nn -i etho port 80
+
+
+Centos 查看/搜素日志 & 查找文件、目录、内容等 常用命令
+https://blog.csdn.net/cfm_gavin/article/details/108082281
+
+网友博客：三挥四握
+https://blog.csdn.net/qzcsu/article/details/72861891?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&dist_request_id=25bb35fa-4d80-457c-a3a6-1c98f1c198ec&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control
+
+
+
+
+
+
